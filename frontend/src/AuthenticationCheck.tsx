@@ -7,7 +7,7 @@ import type { TRootState } from "./redux/store"
 
 export const AuthenticationCheck = () => {
 
-    const { isAuthenticated, userSession } = useSelector((state: TRootState) => state.user)
+    const { isAuthenticated, userSession, loading } = useSelector((state: TRootState) => state.user)
     useEffect(() => {
         if (isAuthenticated) {
             console.log("User is authenticated", userSession)
@@ -18,7 +18,7 @@ export const AuthenticationCheck = () => {
     , [isAuthenticated, userSession])
 
     return (
-        isAuthenticated ? (
+        loading? <h3>Loading ...</h3> :isAuthenticated ? (
             <Box className={"layout"}>
             <NavigationBar/>
             <Outlet/>

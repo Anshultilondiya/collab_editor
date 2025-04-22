@@ -6,6 +6,7 @@ const initialState: UserState = {
     isAuthenticated: false,
     user: null,
     userSession: null,
+    loading: true,
 }
 
 export const userSlice = createSlice({
@@ -15,6 +16,10 @@ export const userSlice = createSlice({
     setUserSession: (state, action) => {
       state.userSession = action.payload
       state.isAuthenticated = !!action.payload
+      state.loading = false
+    },
+    setUserSessionLoading: (state, action) => {
+      state.loading = action.payload
     }
   },
 })

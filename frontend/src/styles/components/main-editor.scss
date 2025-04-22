@@ -1,0 +1,52 @@
+.main-editor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  height: 100%;
+  width: 100%;
+
+  .layout {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.page {
+  width: 85%;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  position: relative;
+
+  .placeholder {
+    padding: 5px;
+    position: absolute;
+    top: 0;
+    color: #aaa;
+    font-size: 1.2em;
+    font-family: inherit;
+    &.show {
+      display: block;
+    }
+    &.hide {
+      display: none;
+    }
+  }
+
+  .text-area {
+    top: 0;
+    position: absolute;
+    width: inherit;
+    outline: none;
+    border: none;
+    resize: none;
+    padding: 5px;
+    text-align: left !important;
+    font-size: 1.2em;
+    font-family: inherit;
+  }
+}

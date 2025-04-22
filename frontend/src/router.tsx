@@ -1,7 +1,7 @@
 import {Routes, Route } from "react-router";
 import { AuthPage } from "./pages/Auth";
 import { DashboardPage } from "./pages/Dashboard";
-import { EditorPage } from "./pages/Editor";
+import { EditorPage } from "./pages/EditorPage";
 import { AuthenticationCheck } from "./AuthenticationCheck";
 
 

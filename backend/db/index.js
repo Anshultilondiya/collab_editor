@@ -1,6 +1,23 @@
-import postgres from "postgres";
+import { PrismaClient } from "@prisma/client";
 
-const connectionString = process.env.DATABASE_URL;
-const sql = postgres(connectionString);
+const prisma = new PrismaClient();
 
-export default sql;
+// async function main() {
+//   //change to reference a table in your schema
+//   const val = await prisma.user.findMany({
+//     take: 10,
+//   });
+//   console.log(val);
+// }
+
+// main()
+//   .then(async () => {
+//     await prisma.$disconnect();
+//   })
+//   .catch(async (e) => {
+//     console.error(e);
+//     await prisma.$disconnect();
+//   process.exit(1);
+//   });
+
+export default prisma;

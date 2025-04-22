@@ -10,17 +10,35 @@ const getAuthorizationHeader = async () => {
   return null
 }
 
-const getAxiosInstance = async () => {
-  const token = await getAuthorizationHeader()
-  return axios.create({
-    baseURL: 'http://localhost:3000/api/v1',
-    timeout: 5000,
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': token
+// const refreshToken = async () => {
+//   const {data: {session}} = await supabase.auth.getSession()
+//   if (session) {
+//     const { data, error } = await supabase.auth.refreshSession()
+//     if (error) {
+//       throw new Error(error.message)
+//     }
+//     return data.session?.access_token
+//   }
+//   return null
+// }
+
+class AxiosInstance {
+  private static instance: ReturnType<typeof axios.create> | null = null;
+
+  static async getInstance() {
+    if (!this.instance) {
+      const token = await getAuthorizationHeader();
+      this.instance = axios.create({
+        baseURL: 'http://localhost:3000/',
+        timeout: 5000,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        }
+      });
     }
-  })
+    return this.instance;
+  }
 }
 
-
-export default getAxiosInstance;
+export default AxiosInstance;
