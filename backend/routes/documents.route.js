@@ -3,6 +3,7 @@ import {
   createDocument,
   getAllDocumentForUser,
   getDocumentById,
+  saveDocument,
   shareDocument,
   updateDocName,
 } from "../services/document.service.js";
@@ -57,6 +58,18 @@ router.post("/share-doc/:docId", async (req, res) => {
       .json({ message: "Document not found or user not found" });
   }
   res.status(200).json(document);
+});
+
+router.post("/save-doc/:docId", async (req, res) => {
+  const { docId } = req.params;
+  const { content } = req.body;
+  if (!content) {
+    return res.status(400).json({ message: "Content is required" });
+  }
+
+  const document = await saveDocument(docId, content);
+
+  res.status(200).json({ message: "Document saved successfully" });
 });
 
 export default router;

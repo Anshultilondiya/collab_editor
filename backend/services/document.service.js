@@ -97,3 +97,15 @@ export const shareDocument = async (documentId, email) => {
   });
   return sharedDocument;
 };
+
+export const saveDocument = async (documentId, content) => {
+  const document = await prisma.document.update({
+    where: {
+      id: documentId,
+    },
+    data: {
+      content: content,
+    },
+  });
+  return document;
+};

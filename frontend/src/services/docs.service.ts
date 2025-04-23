@@ -33,3 +33,9 @@ export const shareDoc = async (docId: string, email: string) => {
     const response = await instance.post(`/docs/share-doc/${docId}`, { email });
     return response.data;
 }
+
+export const saveDocument = async (docId: string, content: string, signal: AbortSignal) => {
+    const instance = await AxiosInstance.getInstance();
+    const response = await instance.post(`/docs/save-doc/${docId}`, { content }, { signal });
+    return response.data;
+}
